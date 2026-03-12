@@ -11,7 +11,7 @@ pub fn PainPoints() -> impl IntoView {
                     // Card 1 - Data breach
                     <div class="pain-card">
                         <div class="pain-card__icon-badge">
-                            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                 <path d="M24 4L6 12v12c0 11.1 7.7 21.5 18 24 10.3-2.5 18-12.9 18-24V12L24 4z" stroke="currentColor" stroke-width="2.5" fill="none"/>
                                 <line x1="14" y1="14" x2="34" y2="34" stroke="currentColor" stroke-width="2.5"/>
                                 <line x1="34" y1="14" x2="14" y2="34" stroke="currentColor" stroke-width="2.5"/>
@@ -30,7 +30,7 @@ pub fn PainPoints() -> impl IntoView {
                     // Card 2 - Device theft
                     <div class="pain-card">
                         <div class="pain-card__icon-badge">
-                            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                 <rect x="6" y="8" width="36" height="26" rx="3" stroke="currentColor" stroke-width="2.5" fill="none"/>
                                 <line x1="6" y1="38" x2="42" y2="38" stroke="currentColor" stroke-width="2.5"/>
                                 <path d="M20 40h8" stroke="currentColor" stroke-width="2.5"/>
@@ -50,7 +50,7 @@ pub fn PainPoints() -> impl IntoView {
                     // Card 3 - Manager hacked
                     <div class="pain-card">
                         <div class="pain-card__icon-badge">
-                            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                 <rect x="10" y="18" width="28" height="22" rx="3" stroke="currentColor" stroke-width="2.5" fill="none"/>
                                 <circle cx="24" cy="14" r="6" stroke="currentColor" stroke-width="2.5" fill="none"/>
                                 <path d="M19 30h10M19 35h6" stroke="currentColor" stroke-width="2" opacity="0.6"/>

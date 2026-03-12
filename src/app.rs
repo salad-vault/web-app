@@ -17,12 +17,22 @@ use crate::sections::faq::Faq;
 use crate::sections::final_cta::FinalCta;
 use crate::sections::footer::Footer;
 
+/// Section IDs used for navigation anchors.
+pub mod section_ids {
+    pub const HOW_IT_WORKS: &str = "how-it-works";
+    pub const TRUST: &str = "trust";
+    pub const PRICING: &str = "pricing";
+}
+
+/// Height of the fixed navbar in pixels, used as scroll offset.
+const NAVBAR_HEIGHT: f64 = 80.0;
+
 /// Scroll to a section by its id.
 pub fn scroll_to(id: &str) {
     if let Some(window) = web_sys::window() {
         if let Some(document) = window.document() {
             if let Some(el) = document.get_element_by_id(id) {
-                let top = el.get_bounding_client_rect().top() + window.scroll_y().unwrap_or(0.0) - 80.0;
+                let top = el.get_bounding_client_rect().top() + window.scroll_y().unwrap_or(0.0) - NAVBAR_HEIGHT;
                 let opts = web_sys::ScrollToOptions::new();
                 opts.set_top(top);
                 opts.set_behavior(web_sys::ScrollBehavior::Smooth);
@@ -56,35 +66,36 @@ pub fn setup_scroll_observer() {
     ) {
         if let Some(window) = web_sys::window() {
             if let Some(document) = window.document() {
-                // Use querySelectorAll via js_sys to avoid needing extra web-sys features.
-                let elements = js_sys::Reflect::apply(
-                    &js_sys::Function::from(
-                        js_sys::Reflect::get(
-                            &document,
-                            &JsValue::from_str("querySelectorAll"),
-                        ).unwrap()
-                    ),
+                let qsa = js_sys::Reflect::get(
                     &document,
-                    &js_sys::Array::of1(&JsValue::from_str(".animate-on-scroll")),
+                    &JsValue::from_str("querySelectorAll"),
                 );
-                if let Ok(node_list) = elements {
-                    let length = js_sys::Reflect::get(&node_list, &JsValue::from_str("length"))
-                        .unwrap_or(JsValue::from_f64(0.0))
-                        .as_f64()
-                        .unwrap_or(0.0) as u32;
-                    for i in 0..length {
-                        if let Ok(el) = js_sys::Reflect::get(&node_list, &JsValue::from_f64(i as f64)) {
-                            if !el.is_undefined() && !el.is_null() {
-                                observer.observe(el.unchecked_ref::<web_sys::Element>());
+                if let Ok(func) = qsa {
+                    let func = js_sys::Function::from(func);
+                    let result = js_sys::Reflect::apply(
+                        &func,
+                        &document,
+                        &js_sys::Array::of1(&JsValue::from_str(".animate-on-scroll")),
+                    );
+                    if let Ok(node_list) = result {
+                        let length = js_sys::Reflect::get(&node_list, &JsValue::from_str("length"))
+                            .unwrap_or(JsValue::from_f64(0.0))
+                            .as_f64()
+                            .unwrap_or(0.0) as u32;
+                        for i in 0..length {
+                            if let Ok(el) = js_sys::Reflect::get(&node_list, &JsValue::from_f64(i as f64)) {
+                                if !el.is_undefined() && !el.is_null() {
+                                    observer.observe(el.unchecked_ref::<web_sys::Element>());
+                                }
                             }
                         }
                     }
                 }
             }
         }
-        // Keep the observer alive.
+        // Keep the closure and observer alive for the lifetime of the page.
+        // This is intentional: the observer must persist to detect scroll events.
         closure.forget();
-        // Leak the observer so it stays active.
         std::mem::forget(observer);
     }
 }

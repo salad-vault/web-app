@@ -2,7 +2,7 @@ use leptos::prelude::*;
 use wasm_bindgen::prelude::*;
 use wasm_bindgen::JsCast;
 
-use crate::app::scroll_to;
+use crate::app::{scroll_to, section_ids};
 
 #[component]
 pub fn Hero() -> impl IntoView {
@@ -29,7 +29,9 @@ pub fn Hero() -> impl IntoView {
         }) as Closure<dyn Fn()>;
 
         if let Some(window) = web_sys::window() {
-            let _ = window.set_interval_with_callback_and_timeout_and_arguments_0(
+            // Store interval ID; the closure is kept alive intentionally
+            // since the hero animation runs for the lifetime of the page.
+            let _interval_id = window.set_interval_with_callback_and_timeout_and_arguments_0(
                 cb.as_ref().unchecked_ref(),
                 2500,
             );
@@ -60,7 +62,7 @@ pub fn Hero() -> impl IntoView {
                         "Gardez le contrôle de vos données"
                     </p>
                     <div class="hero__actions">
-                        <button class="btn btn--primary btn--lg btn--glow" on:click=move |_| scroll_to("pricing")>
+                        <button class="btn btn--primary btn--lg btn--glow" on:click=move |_| scroll_to(section_ids::PRICING)>
                             "Protéger mes données"
                         </button>
                         <a href="https://github.com" target="_blank" rel="noopener" class="hero__secondary-link">
@@ -71,7 +73,7 @@ pub fn Hero() -> impl IntoView {
 
                 <div class="hero__visual">
                     <div class="hero-grid">
-                        <svg class="hero-grid__lines" viewBox="0 0 420 420" fill="none">
+                        <svg class="hero-grid__lines" viewBox="0 0 420 420" fill="none" aria-hidden="true">
                             // Horizontal connections (6)
                             <line x1="70" y1="70" x2="210" y2="70" class=move || line_class(0)/>
                             <line x1="210" y1="70" x2="350" y2="70" class=move || line_class(1)/>
@@ -88,15 +90,15 @@ pub fn Hero() -> impl IntoView {
                             <line x1="350" y1="210" x2="350" y2="350" class=move || line_class(11)/>
                         </svg>
                         <div class="hero-grid__nodes">
-                            <div class="hero-grid__node" style="--delay: 0s"><img src="public/favicon.svg" alt=""/></div>
-                            <div class="hero-grid__node" style="--delay: 0.1s"><img src="public/favicon.svg" alt=""/></div>
-                            <div class="hero-grid__node" style="--delay: 0.2s"><img src="public/favicon.svg" alt=""/></div>
-                            <div class="hero-grid__node" style="--delay: 0.15s"><img src="public/favicon.svg" alt=""/></div>
-                            <div class="hero-grid__node hero-grid__node--accent" style="--delay: 0.25s"><img src="public/favicon.svg" alt=""/></div>
-                            <div class="hero-grid__node" style="--delay: 0.3s"><img src="public/favicon.svg" alt=""/></div>
-                            <div class="hero-grid__node" style="--delay: 0.35s"><img src="public/favicon.svg" alt=""/></div>
-                            <div class="hero-grid__node" style="--delay: 0.4s"><img src="public/favicon.svg" alt=""/></div>
-                            <div class="hero-grid__node" style="--delay: 0.45s"><img src="public/favicon.svg" alt=""/></div>
+                            <div class="hero-grid__node" style="--delay: 0s"><img src="public/favicon.svg" alt="" role="presentation"/></div>
+                            <div class="hero-grid__node" style="--delay: 0.1s"><img src="public/favicon.svg" alt="" role="presentation"/></div>
+                            <div class="hero-grid__node" style="--delay: 0.2s"><img src="public/favicon.svg" alt="" role="presentation"/></div>
+                            <div class="hero-grid__node" style="--delay: 0.15s"><img src="public/favicon.svg" alt="" role="presentation"/></div>
+                            <div class="hero-grid__node hero-grid__node--accent" style="--delay: 0.25s"><img src="public/favicon.svg" alt="" role="presentation"/></div>
+                            <div class="hero-grid__node" style="--delay: 0.3s"><img src="public/favicon.svg" alt="" role="presentation"/></div>
+                            <div class="hero-grid__node" style="--delay: 0.35s"><img src="public/favicon.svg" alt="" role="presentation"/></div>
+                            <div class="hero-grid__node" style="--delay: 0.4s"><img src="public/favicon.svg" alt="" role="presentation"/></div>
+                            <div class="hero-grid__node" style="--delay: 0.45s"><img src="public/favicon.svg" alt="" role="presentation"/></div>
                         </div>
                     </div>
                 </div>

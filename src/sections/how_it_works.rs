@@ -26,13 +26,13 @@ pub fn HowItWorks() -> impl IntoView {
 
                         let icon_svg = match icon_type {
                             "download" => view! {
-                                <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                     <path d="M20 5v22M12 20l8 7 8-7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                                     <path d="M6 30v4a2 2 0 002 2h24a2 2 0 002-2v-4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
                                 </svg>
                             }.into_any(),
                             "garden" => view! {
-                                <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                     <path d="M20 36V20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
                                     <path d="M20 20c0-8 8-12 14-10-2 6-8 10-14 10z" stroke="currentColor" stroke-width="2" fill="none"/>
                                     <path d="M20 24c0-6-6-10-12-8 2 5 7 8 12 8z" stroke="currentColor" stroke-width="2" fill="none"/>
@@ -40,7 +40,7 @@ pub fn HowItWorks() -> impl IntoView {
                                 </svg>
                             }.into_any(),
                             "folders" => view! {
-                                <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                     <rect x="4" y="8" width="14" height="12" rx="2" stroke="currentColor" stroke-width="2" fill="none"/>
                                     <rect x="22" y="8" width="14" height="12" rx="2" stroke="currentColor" stroke-width="2" fill="none"/>
                                     <rect x="4" y="24" width="14" height="12" rx="2" stroke="currentColor" stroke-width="2" fill="none"/>
@@ -52,7 +52,7 @@ pub fn HowItWorks() -> impl IntoView {
                                 </svg>
                             }.into_any(),
                             _ /* moon */ => view! {
-                                <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                     <path d="M32 24A14 14 0 0116 8a14 14 0 1016 16z" stroke="currentColor" stroke-width="2.5" fill="none"/>
                                     <circle cx="28" cy="10" r="1" fill="currentColor"/>
                                     <circle cx="34" cy="18" r="1.5" fill="currentColor"/>

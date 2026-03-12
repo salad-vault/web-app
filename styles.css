@@ -602,11 +602,11 @@ input {
    ============================================================ */
 .pain-points {
     padding: var(--section-pad);
-    background: #ecf0f1;
+    background: var(--bg-dark);
 }
 
 .pain-points .section-title {
-    color: #1a1a1a;
+    color: var(--text-heading);
 }
 
 .pain-points__grid {
