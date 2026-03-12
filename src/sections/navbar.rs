@@ -2,7 +2,7 @@ use leptos::prelude::*;
 use wasm_bindgen::prelude::*;
 use wasm_bindgen::JsCast;
 
-use crate::app::scroll_to;
+use crate::app::{scroll_to, section_ids};
 
 #[component]
 pub fn Navbar() -> impl IntoView {
@@ -48,23 +48,23 @@ pub fn Navbar() -> impl IntoView {
                     <a href="#how-it-works" class="navbar__link" on:click=move |e: web_sys::MouseEvent| {
                         e.prevent_default();
                         set_menu_open.set(false);
-                        scroll_to("how-it-works");
+                        scroll_to(section_ids::HOW_IT_WORKS);
                     }>"Fonctionnement"</a>
                     <a href="#trust" class="navbar__link" on:click=move |e: web_sys::MouseEvent| {
                         e.prevent_default();
                         set_menu_open.set(false);
-                        scroll_to("trust");
+                        scroll_to(section_ids::TRUST);
                     }>"Securite"</a>
                     <a href="#pricing" class="navbar__link" on:click=move |e: web_sys::MouseEvent| {
                         e.prevent_default();
                         set_menu_open.set(false);
-                        scroll_to("pricing");
+                        scroll_to(section_ids::PRICING);
                     }>"Tarif"</a>
                 </div>
 
                 <a href="#pricing" class="navbar__cta btn btn--primary btn--sm" on:click=move |e: web_sys::MouseEvent| {
                     e.prevent_default();
-                    scroll_to("pricing");
+                    scroll_to(section_ids::PRICING);
                 }>"Telecharger"</a>
 
                 <button

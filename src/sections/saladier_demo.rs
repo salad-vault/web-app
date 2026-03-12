@@ -7,7 +7,7 @@ pub fn SaladierDemo() -> impl IntoView {
     let (breached_index, set_breached_index) = signal(Option::<usize>::None);
     let (breach_message, set_breach_message) = signal(Option::<String>::None);
 
-    let add_saladier = move |_| {
+    let try_add_saladier = move || {
         let name = input_value.get().trim().to_string();
         if !name.is_empty() && saladiers.get().len() < 4 {
             set_saladiers.update(|s| s.push(name));
@@ -15,6 +15,10 @@ pub fn SaladierDemo() -> impl IntoView {
             set_breached_index.set(None);
             set_breach_message.set(None);
         }
+    };
+
+    let add_saladier = move |_| {
+        try_add_saladier();
     };
 
     let simulate_breach = move |_| {
@@ -49,13 +53,7 @@ pub fn SaladierDemo() -> impl IntoView {
 
     let on_keydown = move |ev: leptos::ev::KeyboardEvent| {
         if ev.key() == "Enter" {
-            let name = input_value.get().trim().to_string();
-            if !name.is_empty() && saladiers.get().len() < 4 {
-                set_saladiers.update(|s| s.push(name));
-                set_input_value.set(String::new());
-                set_breached_index.set(None);
-                set_breach_message.set(None);
-            }
+            try_add_saladier();
         }
     };
 
@@ -85,6 +83,7 @@ pub fn SaladierDemo() -> impl IntoView {
                         <input
                             type="text"
                             class="saladier-demo__input"
+                            aria-label="Nom du Saladier"
                             placeholder="Nommez votre Saladier (Perso, Pro, Crypto...)"
                             prop:value=input_value
                             on:input=on_input

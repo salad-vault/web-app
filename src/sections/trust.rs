@@ -53,25 +53,25 @@ pub fn Trust() -> impl IntoView {
 
                         let icon_svg = match icon_type {
                             "code" => view! {
-                                <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                     <path d="M12 10L4 18l8 8M24 10l8 8-8 8M20 6l-4 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             }.into_any(),
                             "shield" => view! {
-                                <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                     <path d="M18 3L4 9v9c0 8.3 6 16.1 14 18 8-1.9 14-9.7 14-18V9L18 3z" stroke="currentColor" stroke-width="2.5" fill="none"/>
                                     <path d="M12 18l4 4 8-8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             }.into_any(),
                             "lock" => view! {
-                                <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                     <rect x="8" y="16" width="20" height="14" rx="3" stroke="currentColor" stroke-width="2.5" fill="none"/>
                                     <path d="M12 16v-4a6 6 0 0112 0v4" stroke="currentColor" stroke-width="2.5" fill="none"/>
                                     <circle cx="18" cy="24" r="2.5" fill="currentColor"/>
                                 </svg>
                             }.into_any(),
                             _ /* eye-off */ => view! {
-                                <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                     <path d="M4 18s5-10 14-10 14 10 14 10-5 10-14 10S4 18 4 18z" stroke="currentColor" stroke-width="2.5" fill="none"/>
                                     <circle cx="18" cy="18" r="4" stroke="currentColor" stroke-width="2.5" fill="none"/>
                                     <line x1="6" y1="6" x2="30" y2="30" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>

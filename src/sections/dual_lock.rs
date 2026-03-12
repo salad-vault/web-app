@@ -34,7 +34,7 @@ pub fn DualLock() -> impl IntoView {
                         on:click=move |_| set_key_a.update(|v| *v = !*v)
                     >
                         <div class="dual-lock__key-icon">
-                            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                 <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="2" fill="none"/>
                                 <line x1="18" y1="18" x2="30" y2="30" stroke="currentColor" stroke-width="2"/>
                                 <line x1="26" y1="30" x2="30" y2="26" stroke="currentColor" stroke-width="2"/>
@@ -52,7 +52,7 @@ pub fn DualLock() -> impl IntoView {
                             <div class="dual-lock__vault-icon">
                                 {move || if is_unlocked() {
                                     view! {
-                                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" class="dual-lock__icon-unlocked">
+                                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" class="dual-lock__icon-unlocked" aria-hidden="true">
                                             <path d="M34 20h-4v-6a6 6 0 0 0-12 0" stroke="var(--accent)" stroke-width="3" fill="none" stroke-linecap="round"/>
                                             <rect x="10" y="20" width="28" height="20" rx="4" stroke="var(--accent)" stroke-width="3" fill="none"/>
                                             <circle cx="24" cy="31" r="3" fill="var(--accent)"/>
@@ -60,7 +60,7 @@ pub fn DualLock() -> impl IntoView {
                                     }.into_any()
                                 } else {
                                     view! {
-                                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" class="dual-lock__icon-locked">
+                                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" class="dual-lock__icon-locked" aria-hidden="true">
                                             <path d="M14 20v-6a10 10 0 0 1 20 0v6" stroke="var(--text-muted)" stroke-width="3" fill="none"/>
                                             <rect x="10" y="20" width="28" height="20" rx="4" stroke="var(--text-muted)" stroke-width="3" fill="none"/>
                                             <circle cx="24" cy="31" r="3" fill="var(--text-muted)"/>
@@ -88,7 +88,7 @@ pub fn DualLock() -> impl IntoView {
                         on:click=move |_| set_key_b.update(|v| *v = !*v)
                     >
                         <div class="dual-lock__key-icon">
-                            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                 <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="2" fill="none"/>
                                 <line x1="18" y1="18" x2="30" y2="30" stroke="currentColor" stroke-width="2"/>
                                 <line x1="24" y1="30" x2="30" y2="24" stroke="currentColor" stroke-width="2"/>
